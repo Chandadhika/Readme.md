@@ -24,4 +24,4 @@ JavaScript,HTML,CSS,Node
 [GitHub.com](https://chandadhika.github.io/Readme.md/)
 
 ## DATE
-$copy;2024,Nob,9 by 
+$copy;2024,Nob,9 by Chandadhika
