@@ -63,12 +63,12 @@ const readmeFile = () => {
         {
             type: 'input',
             name: 'github',
-            message: 'Enter your GitHub Username (Required)',
+            message: 'Enter your GitHubLink (Required)',
             validate: githubInput => {
               if (githubInput) {
                 return true;
               } else {
-                console.log('Please enter your GitHub username!');
+                console.log('Please enter your GitHubLink!');
                 return false;
               }
             }
@@ -82,47 +82,18 @@ const readmeFile = () => {
     ]);
 };
 
-// step 3: Function to format the README content
+// step 3: looping Function to format data for the Objects.
 const ReadMeContent = (data) => {
-    return `
-${data.name}
-
-# ${data.title}
-
-## Description
-${data.description}
-
-## Installation
-${data.installation}
-
-## Usage
-${data.usage}
-
-## License
-${data.License}
-
-## language
-${data.languages}
-
-## github 
-${data.github}
-
-### date
-${data.date}
-    `;
+    let readmeContent = '';
+  
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        readmeContent += `\n## ${key.toUpperCase()}\n${data[key]}\n`;
+      }
+    }
+  
+    return readmeContent;
 };
-
-// const ReadMeContent = (data) => {
-//     let readmeContent = '';
-  
-//     for (const key in data) {
-//       if (data.hasOwnProperty(key)) {
-//         readmeContent += `\n## ${key.toUpperCase()}\n${data[key]}\n`;
-//       }
-//     }
-  
-//     return readmeContent;
-// };
 
 // step 4: Run the readmeFile function and generate README file
 readmeFile()
@@ -135,9 +106,5 @@ readmeFile()
       if (err) throw new Error(err);
 
       console.log('README file created! Check out README.md in this directory to see it!');
-
-      // This operator is frequently used as a shortcut for the if statement.
-    //   err ? console.log(err) : console.log('README file created!');
-      console.log('Thanks!')
     });
   });
